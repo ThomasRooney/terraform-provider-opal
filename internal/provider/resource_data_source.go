@@ -29,18 +29,19 @@ type ResourceDataSource struct {
 
 // ResourceDataSourceModel describes the data model.
 type ResourceDataSourceModel struct {
-	AdminOwnerID          types.String                            `tfsdk:"admin_owner_id"`
-	AppID                 types.String                            `tfsdk:"app_id"`
-	Description           types.String                            `tfsdk:"description"`
-	ID                    types.String                            `tfsdk:"id"`
-	Name                  types.String                            `tfsdk:"name"`
-	ParentResourceID      types.String                            `tfsdk:"parent_resource_id"`
-	RemoteInfo            *tfTypes.ResourceRemoteInfo             `tfsdk:"remote_info"`
-	RequestConfigurations []tfTypes.RequestConfiguration          `tfsdk:"request_configurations"`
-	RequireMfaToApprove   types.Bool                              `tfsdk:"require_mfa_to_approve"`
-	RequireMfaToConnect   types.Bool                              `tfsdk:"require_mfa_to_connect"`
-	ResourceType          types.String                            `tfsdk:"resource_type"`
-	TicketPropagation     *tfTypes.TicketPropagationConfiguration `tfsdk:"ticket_propagation"`
+	AdminOwnerID              types.String                            `tfsdk:"admin_owner_id"`
+	AppID                     types.String                            `tfsdk:"app_id"`
+	CustomRequestNotification types.String                            `tfsdk:"custom_request_notification"`
+	Description               types.String                            `tfsdk:"description"`
+	ID                        types.String                            `tfsdk:"id"`
+	Name                      types.String                            `tfsdk:"name"`
+	ParentResourceID          types.String                            `tfsdk:"parent_resource_id"`
+	RemoteInfo                *tfTypes.ResourceRemoteInfo             `tfsdk:"remote_info"`
+	RequestConfigurations     []tfTypes.RequestConfiguration          `tfsdk:"request_configurations"`
+	RequireMfaToApprove       types.Bool                              `tfsdk:"require_mfa_to_approve"`
+	RequireMfaToConnect       types.Bool                              `tfsdk:"require_mfa_to_connect"`
+	ResourceType              types.String                            `tfsdk:"resource_type"`
+	TicketPropagation         *tfTypes.TicketPropagationConfiguration `tfsdk:"ticket_propagation"`
 }
 
 // Metadata returns the data source type name.
@@ -61,6 +62,10 @@ func (r *ResourceDataSource) Schema(ctx context.Context, req datasource.SchemaRe
 			"app_id": schema.StringAttribute{
 				Computed:    true,
 				Description: `The ID of the app.`,
+			},
+			"custom_request_notification": schema.StringAttribute{
+				Computed:    true,
+				Description: `Custom request notification sent upon request approval for this configuration template.`,
 			},
 			"description": schema.StringAttribute{
 				Computed:    true,

@@ -48,24 +48,25 @@ type GroupResource struct {
 
 // GroupResourceModel describes the resource data model.
 type GroupResourceModel struct {
-	AdminOwnerID          types.String                                `tfsdk:"admin_owner_id"`
-	AppID                 types.String                                `tfsdk:"app_id"`
-	Description           types.String                                `tfsdk:"description"`
-	GroupBindingID        types.String                                `tfsdk:"group_binding_id"`
-	GroupLeaderUserIds    []types.String                              `tfsdk:"group_leader_user_ids"`
-	GroupType             types.String                                `tfsdk:"group_type"`
-	ID                    types.String                                `tfsdk:"id"`
-	MessageChannelIds     []types.String                              `tfsdk:"message_channel_ids"`
-	MessageChannels       tfTypes.GetGroupMessageChannelsResponseBody `tfsdk:"message_channels"`
-	Name                  types.String                                `tfsdk:"name"`
-	OnCallScheduleIds     []types.String                              `tfsdk:"on_call_schedule_ids"`
-	OncallSchedules       tfTypes.GetGroupOnCallSchedulesResponseBody `tfsdk:"oncall_schedules"`
-	RemoteInfo            *tfTypes.GroupRemoteInfo                    `tfsdk:"remote_info"`
-	RemoteName            types.String                                `tfsdk:"remote_name"`
-	RequestConfigurations []tfTypes.RequestConfiguration              `tfsdk:"request_configurations"`
-	RequireMfaToApprove   types.Bool                                  `tfsdk:"require_mfa_to_approve"`
-	Visibility            types.String                                `tfsdk:"visibility"`
-	VisibilityGroupIds    []types.String                              `tfsdk:"visibility_group_ids"`
+	AdminOwnerID              types.String                                `tfsdk:"admin_owner_id"`
+	AppID                     types.String                                `tfsdk:"app_id"`
+	CustomRequestNotification types.String                                `tfsdk:"custom_request_notification"`
+	Description               types.String                                `tfsdk:"description"`
+	GroupBindingID            types.String                                `tfsdk:"group_binding_id"`
+	GroupLeaderUserIds        []types.String                              `tfsdk:"group_leader_user_ids"`
+	GroupType                 types.String                                `tfsdk:"group_type"`
+	ID                        types.String                                `tfsdk:"id"`
+	MessageChannelIds         []types.String                              `tfsdk:"message_channel_ids"`
+	MessageChannels           tfTypes.GetGroupMessageChannelsResponseBody `tfsdk:"message_channels"`
+	Name                      types.String                                `tfsdk:"name"`
+	OnCallScheduleIds         []types.String                              `tfsdk:"on_call_schedule_ids"`
+	OncallSchedules           tfTypes.GetGroupOnCallSchedulesResponseBody `tfsdk:"oncall_schedules"`
+	RemoteInfo                *tfTypes.GroupRemoteInfo                    `tfsdk:"remote_info"`
+	RemoteName                types.String                                `tfsdk:"remote_name"`
+	RequestConfigurations     []tfTypes.RequestConfiguration              `tfsdk:"request_configurations"`
+	RequireMfaToApprove       types.Bool                                  `tfsdk:"require_mfa_to_approve"`
+	Visibility                types.String                                `tfsdk:"visibility"`
+	VisibilityGroupIds        []types.String                              `tfsdk:"visibility_group_ids"`
 }
 
 func (r *GroupResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -92,6 +93,14 @@ func (r *GroupResource) Schema(ctx context.Context, req resource.SchemaRequest, 
 				},
 				Required:    true,
 				Description: `The ID of the app for the group. Requires replacement if changed. `,
+			},
+			"custom_request_notification": schema.StringAttribute{
+				Computed:    true,
+				Optional:    true,
+				Description: `Custom request notification sent upon request approval for this configuration template.`,
+				Validators: []validator.String{
+					stringvalidator.UTF8LengthAtMost(800),
+				},
 			},
 			"description": schema.StringAttribute{
 				Computed: true,

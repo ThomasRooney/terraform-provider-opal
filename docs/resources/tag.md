@@ -14,7 +14,7 @@ Tag Resource
 
 ```terraform
 resource "opal_tag" "my_tag" {
-  key   = "database-name"
+  key   = "api-scope"
   value = "redis_db"
 }
 ```

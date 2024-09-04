@@ -14,7 +14,7 @@ Group DataSource
 
 ```terraform
 data "opal_group" "my_group" {
-  id = "f454d283-ca87-4a8a-bdbb-df212eca5353"
+  id = "4baf8423-db0a-4037-a4cf-f79c60cb67a5"
 }
 ```
 
@@ -29,6 +29,7 @@ data "opal_group" "my_group" {
 
 - `admin_owner_id` (String) The ID of the owner of the group.
 - `app_id` (String) The ID of the group's app.
+- `custom_request_notification` (String) Custom request notification sent upon request approval for this configuration template.
 - `description` (String) A description of the group.
 - `group_binding_id` (String) The ID of the associated group binding.
 - `group_leader_user_ids` (Set of String) A list of User IDs for the group leaders of the group

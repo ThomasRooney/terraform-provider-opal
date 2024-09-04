@@ -59,6 +59,10 @@ func (r *ConfigurationTemplateListDataSource) Schema(ctx context.Context, req da
 							Computed:    true,
 							Description: `The ID of the configuration template.`,
 						},
+						"custom_request_notification": schema.StringAttribute{
+							Computed:    true,
+							Description: `Custom request notification sent upon request approval for this configuration template.`,
+						},
 						"linked_audit_message_channel_ids": schema.SetAttribute{
 							Computed:    true,
 							ElementType: types.StringType,

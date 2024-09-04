@@ -32,6 +32,7 @@ Read-Only:
 - `admin_owner_id` (String) The ID of the owner of the configuration template.
 - `break_glass_user_ids` (Set of String) The IDs of the break glass users linked to the configuration template.
 - `configuration_template_id` (String) The ID of the configuration template.
+- `custom_request_notification` (String) Custom request notification sent upon request approval for this configuration template.
 - `linked_audit_message_channel_ids` (Set of String) The IDs of the audit message channels linked to the configuration template.
 - `member_oncall_schedule_ids` (Set of String) The IDs of the on-call schedules linked to the configuration template.
 - `name` (String) The name of the configuration template.

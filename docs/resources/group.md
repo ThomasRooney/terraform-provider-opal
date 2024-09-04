@@ -15,15 +15,16 @@ Group Resource
 ```terraform
 resource "opal_group" "my_group" {
     admin_owner_id = "7c86c85d-0651-43e2-a748-d69d658418e8"
-            app_id = "f454d283-ca87-4a8a-bdbb-df212eca5353"
+            app_id = "b5a5ca27-0ea3-4d86-9199-2126d57d1fbd"
+            custom_request_notification = "Check your email to register your account."
             description = "This group represents Active Directory group \"Payments Production Admin\". We use this AD group to facilitate staging deployments and qualifying new releases."
             group_type = "OPAL_GROUP"
             message_channel_ids = {
-        "e51c0009-dd65-4b4e-90c4-2893326c8d3b",
+        "1c0009dd-65b4-4e10-8428-93326c8d3b65",
     }
-            name = "api-group"
+            name = "API Group"
             on_call_schedule_ids = {
-        "1053f385-d17c-4e27-958f-256147d92ea2",
+        "3f385d17-ce27-4d58-b256-147d92ea2469",
     }
             request_configurations = {
         {
@@ -31,7 +32,7 @@ resource "opal_group" "my_group" {
             auto_approval = false
             condition = {
                 group_ids = {
-                    "3c124e14-6eb0-45cd-86c1-6b8673554554",
+                    "24e146eb-05cd-406c-96b8-673554554108",
                 }
                 role_remote_ids = {
                     "...",
@@ -47,7 +48,7 @@ resource "opal_group" "my_group" {
                 {
                     operator = "AND"
                     owner_ids = {
-                        "37d5bf18-869a-4e72-ac0c-c018ec506c2a",
+                        "5bf18869-ae72-46c0-8c01-8ec506c2a39b",
                     }
                     require_admin_approval = false
                     require_manager_approval = false
@@ -76,6 +77,7 @@ resource "opal_group" "my_group" {
 ### Optional
 
 - `admin_owner_id` (String) The ID of the owner of the group.
+- `custom_request_notification` (String) Custom request notification sent upon request approval for this configuration template.
 - `description` (String) A description of the remote group.
 - `group_leader_user_ids` (Set of String) A list of User IDs for the group leaders of the group
 - `remote_info` (Attributes) Information that defines the remote group. This replaces the deprecated remote_id and metadata fields. Requires replacement if changed. (see [below for nested schema](#nestedatt--remote_info))

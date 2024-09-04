@@ -15,8 +15,9 @@ Resource Resource
 ```terraform
 resource "opal_resource" "my_resource" {
     admin_owner_id = "7c86c85d-0651-43e2-a748-d69d658418e8"
-            app_id = "f454d283-ca87-4a8a-bdbb-df212eca5353"
-            description = "This resource represents AWS IAM role \"SupportUser\"."
+            app_id = "b5a5ca27-0ea3-4d86-9199-2126d57d1fbd"
+            custom_request_notification = "Check your email to register your account."
+            description = "Engineering team Okta role."
             name = "my-mongo-db"
             request_configurations = {
         {
@@ -24,7 +25,7 @@ resource "opal_resource" "my_resource" {
             auto_approval = false
             condition = {
                 group_ids = {
-                    "caf8a4c7-ec57-4b81-a172-8cd3687b3ad9",
+                    "a4c7ec57-b816-4172-8cd3-687b3ad9a192",
                 }
                 role_remote_ids = {
                     "...",
@@ -40,7 +41,7 @@ resource "opal_resource" "my_resource" {
                 {
                     operator = "AND"
                     owner_ids = {
-                        "66c2bdfc-b3e7-4464-ae94-bc89fbd03a92",
+                        "bdfcb3e7-464a-4e94-bc89-fbd03a92242f",
                     }
                     require_admin_approval = false
                     require_manager_approval = false
@@ -53,7 +54,7 @@ resource "opal_resource" "my_resource" {
             resource_type = "AWS_IAM_ROLE"
             visibility = "GLOBAL"
             visibility_group_ids = {
-        "dda2041a-0d76-41a9-b988-b1ee194539e3",
+        "041a0d76-1a93-4988-b1ee-194539e33fdc",
     }
         }
 ```
@@ -72,6 +73,7 @@ resource "opal_resource" "my_resource" {
 ### Optional
 
 - `admin_owner_id` (String) The ID of the owner of the resource.
+- `custom_request_notification` (String) Custom request notification sent upon request approval for this configuration template.
 - `description` (String) A description of the remote resource.
 - `remote_info` (Attributes) Information that defines the remote resource. This replaces the deprecated remote_id and metadata fields. Requires replacement if changed. (see [below for nested schema](#nestedatt--remote_info))
 - `require_mfa_to_approve` (Boolean) A bool representing whether or not to require MFA for reviewers to approve requests for this resource.

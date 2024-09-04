@@ -77,6 +77,10 @@ func (r *GroupListDataSource) Schema(ctx context.Context, req datasource.SchemaR
 							Computed:    true,
 							Description: `The ID of the group's app.`,
 						},
+						"custom_request_notification": schema.StringAttribute{
+							Computed:    true,
+							Description: `Custom request notification sent upon request approval for this configuration template.`,
+						},
 						"description": schema.StringAttribute{
 							Computed:    true,
 							Description: `A description of the group.`,
